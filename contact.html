@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — [Your Name] Photography</title>
+<meta name="description" content="Get in touch with [Your Name] by email.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">[Your Name] <em>Photography</em></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" aria-current="page">Contact</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+  <section class="section">
+    <span class="eyebrow">Contact</span>
+    <h1>Let's talk about your shoot.</h1>
+    <p style="max-width:56ch; color:var(--ink-dim); margin-bottom:2.5rem;">
+      The fastest way to reach me is by email — replace the address below with your
+      own. GitHub Pages can't run a contact form on its own (there's no server behind
+      it), so a plain <code>mailto:</code> link is the simplest option here.
+    </p>
+
+    <div class="contact-wrap">
+      <div class="contact-card">
+        <span class="eyebrow" style="margin-bottom:.75rem;">Email</span>
+        <a class="email-link" href="mailto:you@example.com?subject=Photography%20inquiry">
+          you@example.com
+        </a>
+        <ul class="contact-meta">
+          <li><span>Response time:</span>within [1–2 business days]</li>
+          <li><span>Based in:</span>[City, Country]</li>
+          <li><span>Booking window:</span>[e.g. currently booking for spring]</li>
+        </ul>
+      </div>
+
+      <div class="contact-card">
+        <span class="eyebrow" style="margin-bottom:.75rem;">Before you write</span>
+        <p style="color:var(--ink-dim); margin:0 0 1rem;">
+          To help me reply with something useful, it helps to include:
+        </p>
+        <ul style="color:var(--ink-dim); padding-left:1.1rem; margin:0;">
+          <li>What kind of shoot you're planning</li>
+          <li>Rough date and location</li>
+          <li>Any galleries or references you liked</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© <span id="year"></span> [Your Name] Photography</span>
+  <a href="mailto:you@example.com">you@example.com</a>
+</footer>
+
+<script src="script.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

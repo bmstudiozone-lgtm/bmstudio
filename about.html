@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — [Your Name] Photography</title>
+<meta name="description" content="A little about [Your Name], photographer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">[Your Name] <em>Photography</em></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="about.html" aria-current="page">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+  <section class="section">
+    <span class="eyebrow">About</span>
+    <h1>Hi, I'm [Your Name].</h1>
+
+    <div class="about-grid">
+      <div class="about-portrait">
+        Replace this box with a photo of yourself<br><br>(about.jpg, ~4:5 ratio)
+      </div>
+
+      <div class="about-copy">
+        <p>
+          Write a short, warm opening line here about who you are and how you got
+          into photography.
+        </p>
+        <p>
+          Follow it with a paragraph on how you work: the kind of shoots you take on,
+          what a session with you looks like, and what clients can expect from start
+          to finish.
+        </p>
+        <p>
+          Close with a line about what you're drawn to shooting right now, or what
+          you're looking forward to next.
+        </p>
+
+        <ul class="facts">
+          <li><span>Based in</span><span>[City, Country]</span></li>
+          <li><span>Shooting since</span><span>[Year]</span></li>
+          <li><span>Focus</span><span>[Portraits / Weddings / Travel]</span></li>
+          <li><span>Available for</span><span>[Bookings / Collaborations]</span></li>
+        </ul>
+
+        <a href="contact.html" class="btn btn--accent">Reach out →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© <span id="year"></span> [Your Name] Photography</span>
+  <a href="contact.html">Get in touch →</a>
+</footer>
+
+<script src="script.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

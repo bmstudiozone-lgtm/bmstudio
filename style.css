@@ -1,0 +1,316 @@
+/* =========================================================
+   [Your Name] Photography — base template
+   Design: dark editorial "contact sheet" theme.
+   Change the tokens below to re-skin the whole site.
+   ========================================================= */
+
+:root{
+  --bg:        #121110;
+  --bg-alt:    #1a1917;
+  --ink:       #f2efe9;
+  --ink-dim:   #a39c8f;
+  --line:      #322f2a;
+  --accent:    #b6905a;   /* warm brass — reads like a light-leak / film tone */
+  --accent-dim:#7a6444;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:    "Inter", -apple-system, Segoe UI, sans-serif;
+  --font-mono:    "Space Mono", "Courier New", monospace;
+
+  --nav-h: 4.5rem;
+  --edge: clamp(1.25rem, 5vw, 3.5rem);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{ color:inherit; }
+
+img{ max-width:100%; display:block; }
+
+/* ---------- Skip link (accessibility) ---------- */
+.skip-link{
+  position:absolute; left:-999px; top:0;
+  background:var(--accent); color:var(--bg);
+  padding:.6rem 1rem; z-index:100; font-family:var(--font-mono); font-size:.85rem;
+}
+.skip-link:focus{ left:var(--edge); top:.5rem; }
+
+/* ---------- Nav ---------- */
+.site-nav{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between;
+  height:var(--nav-h);
+  padding:0 var(--edge);
+  background:rgba(18,17,16,.86);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.brand{
+  font-family:var(--font-display);
+  font-size:1.15rem;
+  letter-spacing:.03em;
+  text-decoration:none;
+  font-weight:600;
+}
+.brand em{ color:var(--accent); font-style:normal; }
+
+.nav-links{
+  display:flex; gap:2rem;
+  list-style:none; margin:0; padding:0;
+  font-family:var(--font-mono);
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.nav-links a{
+  text-decoration:none;
+  color:var(--ink-dim);
+  padding:.3rem 0;
+  border-bottom:1px solid transparent;
+  transition:color .2s ease, border-color .2s ease;
+}
+.nav-links a:hover,
+.nav-links a[aria-current="page"]{
+  color:var(--ink);
+  border-color:var(--accent);
+}
+
+.nav-toggle{
+  display:none;
+  background:none; border:1px solid var(--line); color:var(--ink);
+  font-family:var(--font-mono); font-size:.75rem;
+  padding:.45rem .7rem; letter-spacing:.08em; cursor:pointer;
+}
+
+@media (max-width: 720px){
+  .nav-toggle{ display:inline-block; }
+  .nav-links{
+    position:absolute; top:var(--nav-h); left:0; right:0;
+    flex-direction:column; gap:0;
+    background:var(--bg-alt);
+    border-bottom:1px solid var(--line);
+    max-height:0; overflow:hidden;
+    transition:max-height .25s ease;
+  }
+  .nav-links.open{ max-height:20rem; }
+  .nav-links li{ border-top:1px solid var(--line); }
+  .nav-links a{ display:block; padding:1rem var(--edge); border-bottom:none; }
+}
+
+/* ---------- Generic section rhythm ---------- */
+main{ min-height:60vh; }
+.section{
+  padding:5rem var(--edge);
+  max-width:78rem;
+  margin:0 auto;
+}
+.section--tight{ padding-top:3rem; padding-bottom:3rem; }
+
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:.75rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:block;
+  margin-bottom:1rem;
+}
+
+h1,h2,h3{ font-family:var(--font-display); font-weight:600; margin:0 0 1rem; }
+
+/* ---------- Hero ---------- */
+.hero{
+  min-height:calc(100vh - var(--nav-h));
+  display:flex; flex-direction:column; justify-content:center;
+  padding:4rem var(--edge);
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+.hero h1{
+  font-size:clamp(2.6rem, 7vw, 5.5rem);
+  line-height:1.02;
+  max-width:20ch;
+}
+.hero p.lede{
+  max-width:42ch;
+  color:var(--ink-dim);
+  font-size:1.05rem;
+  margin-top:1rem;
+}
+.hero-frame-counter{
+  position:absolute; right:var(--edge); bottom:2.2rem;
+  font-family:var(--font-mono); font-size:.75rem; color:var(--ink-dim);
+  writing-mode:vertical-rl;
+  letter-spacing:.1em;
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-family:var(--font-mono); font-size:.8rem; letter-spacing:.06em;
+  text-transform:uppercase; text-decoration:none;
+  padding:.85rem 1.4rem;
+  border:1px solid var(--ink);
+  color:var(--ink);
+  margin-top:2rem;
+  transition:background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn:hover{ background:var(--ink); color:var(--bg); }
+.btn--accent{ border-color:var(--accent); color:var(--accent); }
+.btn--accent:hover{ background:var(--accent); color:var(--bg); }
+
+/* ---------- Contact-sheet gallery (signature element) ---------- */
+.category-block + .category-block{ margin-top:4.5rem; }
+.category-head{
+  display:flex; align-items:baseline; justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  padding-bottom:.75rem; margin-bottom:1.75rem;
+  flex-wrap:wrap; gap:.5rem;
+}
+.category-head h2{ margin:0; font-size:1.6rem; }
+.category-count{
+  font-family:var(--font-mono); font-size:.75rem; color:var(--ink-dim);
+}
+
+.contact-sheet{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  gap:1.5rem;
+}
+
+.frame{
+  position:relative;
+  aspect-ratio:3 / 2;
+  background:var(--bg-alt);
+  border:1px solid var(--line);
+  overflow:hidden;
+}
+/* sprocket-hole strips, top and bottom, to sell the "film negative" idea */
+.frame::before,
+.frame::after{
+  content:"";
+  position:absolute; left:0; right:0; height:10px;
+  background-image:repeating-linear-gradient(
+    to right, var(--bg) 0 6px, transparent 6px 14px
+  );
+  opacity:.55;
+}
+.frame::before{ top:0; }
+.frame::after{ bottom:0; }
+
+.frame img{
+  width:100%; height:100%; object-fit:cover;
+}
+
+.frame-empty{
+  height:100%; width:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:.6rem;
+  color:var(--ink-dim);
+  padding:1rem;
+  text-align:center;
+}
+.frame-empty svg{ width:28px; height:28px; opacity:.55; }
+.frame-empty .frame-label{
+  font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.frame-number{
+  position:absolute; top:14px; left:10px;
+  font-family:var(--font-mono); font-size:.65rem; color:var(--ink-dim);
+  letter-spacing:.05em;
+}
+
+/* ---------- About ---------- */
+.about-grid{
+  display:grid; grid-template-columns:1fr 1.4fr; gap:3.5rem;
+}
+.about-portrait{
+  aspect-ratio:4/5;
+  background:var(--bg-alt);
+  border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--ink-dim);
+  font-family:var(--font-mono); font-size:.75rem; letter-spacing:.06em;
+  text-align:center; padding:1.5rem;
+}
+.about-copy p{ color:var(--ink-dim); max-width:62ch; }
+.about-copy p:first-child{ color:var(--ink); font-size:1.15rem; }
+
+.facts{
+  list-style:none; margin:2.5rem 0 0; padding:0;
+  border-top:1px solid var(--line);
+}
+.facts li{
+  display:flex; justify-content:space-between; gap:1rem;
+  padding:.85rem 0; border-bottom:1px solid var(--line);
+  font-family:var(--font-mono); font-size:.82rem;
+}
+.facts li span:first-child{ color:var(--ink-dim); }
+
+@media (max-width: 800px){
+  .about-grid{ grid-template-columns:1fr; }
+}
+
+/* ---------- Contact ---------- */
+.contact-wrap{
+  display:grid; grid-template-columns:1fr 1fr; gap:3.5rem;
+  align-items:start;
+}
+.contact-card{
+  border:1px solid var(--line);
+  background:var(--bg-alt);
+  padding:2.5rem;
+}
+.contact-card .email-link{
+  font-family:var(--font-display);
+  font-size:clamp(1.4rem, 3vw, 2rem);
+  color:var(--accent);
+  text-decoration:none;
+  word-break:break-word;
+  border-bottom:1px solid transparent;
+}
+.contact-card .email-link:hover{ border-color:var(--accent); }
+
+.contact-meta{ list-style:none; padding:0; margin-top:2rem; }
+.contact-meta li{
+  font-family:var(--font-mono); font-size:.82rem; color:var(--ink-dim);
+  padding:.5rem 0; border-top:1px solid var(--line);
+}
+.contact-meta li span{ color:var(--ink); margin-right:.5rem; }
+
+@media (max-width: 800px){
+  .contact-wrap{ grid-template-columns:1fr; }
+}
+
+/* ---------- Footer ---------- */
+footer{
+  border-top:1px solid var(--line);
+  padding:2.5rem var(--edge);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+  font-family:var(--font-mono); font-size:.75rem; color:var(--ink-dim);
+}
+footer a{ color:var(--ink-dim); text-decoration:none; }
+footer a:hover{ color:var(--accent); }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .nav-links{ transition:none; }
+}
+
+/* ---------- Focus visibility ---------- */
+a:focus-visible, button:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+}
